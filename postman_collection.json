@@ -1,0 +1,324 @@
+{
+  "info": {
+    "_postman_id": "media-app-grpc-collection",
+    "name": "Media App gRPC API",
+    "description": "REST API endpoints for Media App - gRPC Microservices Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Videos",
+      "item": [
+        {
+          "name": "Upload Video",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set(\"videoId\", jsonData.id);",
+                  "    pm.environment.set(\"creatorId\", jsonData.creator.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Introduction to gRPC\",\n  \"description\": \"A comprehensive guide to gRPC and Protocol Buffers\",\n  \"url\": \"https://example.com/videos/grpc-intro.mp4\",\n  \"durationSeconds\": 1200,\n  \"creator\": {\n    \"id\": \"creator-001\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/videos/upload",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "videos", "upload"]
+            },
+            "description": "Upload a new video with creator information. The video ID will be auto-generated and saved to environment variables."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Introduction to gRPC\",\n  \"description\": \"A comprehensive guide to gRPC and Protocol Buffers\",\n  \"url\": \"https://example.com/videos/grpc-intro.mp4\",\n  \"durationSeconds\": 1200,\n  \"creator\": {\n    \"id\": \"creator-001\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/videos/upload",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8080",
+                  "path": ["api", "videos", "upload"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"title\": \"Introduction to gRPC\",\n  \"description\": \"A comprehensive guide to gRPC and Protocol Buffers\",\n  \"url\": \"https://example.com/videos/grpc-intro.mp4\",\n  \"durationSeconds\": 1200,\n  \"creator\": {\n    \"id\": \"creator-001\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Upload Video - Spring Boot Tutorial",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set(\"videoId\", jsonData.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Spring Boot Microservices Part 1\",\n  \"description\": \"Building microservices with Spring Boot\",\n  \"url\": \"https://example.com/videos/spring-boot-1.mp4\",\n  \"durationSeconds\": 1800,\n  \"creator\": {\n    \"id\": \"creator-002\",\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/videos/upload",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "videos", "upload"]
+            },
+            "description": "Upload another video with a different creator"
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Video - Quick Tutorial",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set(\"videoId\", jsonData.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Quick gRPC Setup\",\n  \"description\": \"5-minute guide to setting up gRPC\",\n  \"url\": \"https://example.com/videos/grpc-quick.mp4\",\n  \"durationSeconds\": 300,\n  \"creator\": {\n    \"id\": \"creator-001\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/videos/upload",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "videos", "upload"]
+            },
+            "description": "Upload a short tutorial by the same creator"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Video by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/videos/{{videoId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "videos", "{{videoId}}"]
+            },
+            "description": "Retrieve a video by its ID. The videoId is automatically set from the upload response."
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/videos/a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "videos",
+                    "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"title\": \"Introduction to gRPC\",\n  \"description\": \"A comprehensive guide to gRPC and Protocol Buffers\",\n  \"url\": \"https://example.com/videos/grpc-intro.mp4\",\n  \"durationSeconds\": 1200,\n  \"creator\": {\n    \"id\": \"creator-001\",\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\"\n  }\n}"
+            }
+          ]
+        }
+      ],
+      "description": "Video management endpoints"
+    },
+    {
+      "name": "Creators",
+      "item": [
+        {
+          "name": "Get Creator by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/creators/creator-001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "creators", "creator-001"]
+            },
+            "description": "Retrieve creator information by ID"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/creators/creator-001",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8080",
+                  "path": ["api", "creators", "creator-001"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n  \"id\": \"creator-001\",\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Creator Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/creators/creator-001/videos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "creators", "creator-001", "videos"]
+            },
+            "description": "Get all videos created by a specific creator"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/creators/creator-001/videos",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8080",
+                  "path": ["api", "creators", "creator-001", "videos"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"title\": \"Introduction to gRPC\",\n    \"description\": \"A comprehensive guide to gRPC and Protocol Buffers\",\n    \"url\": \"https://example.com/videos/grpc-intro.mp4\",\n    \"durationSeconds\": 1200,\n    \"creator\": {\n      \"id\": \"creator-001\",\n      \"name\": \"John Doe\",\n      \"email\": \"john.doe@example.com\"\n    }\n  },\n  {\n    \"id\": \"b2c3d4e5-f6a7-8901-bcde-f12345678901\",\n    \"title\": \"Quick gRPC Setup\",\n    \"description\": \"5-minute guide to setting up gRPC\",\n    \"url\": \"https://example.com/videos/grpc-quick.mp4\",\n    \"durationSeconds\": 300,\n    \"creator\": {\n      \"id\": \"creator-001\",\n      \"name\": \"John Doe\",\n      \"email\": \"john.doe@example.com\"\n    }\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Creator by ID (Dynamic)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/creators/{{creatorId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "creators", "{{creatorId}}"]
+            },
+            "description": "Retrieve creator using environment variable (set from upload response)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Creator Videos (Dynamic)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/creators/{{creatorId}}/videos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "creators", "{{creatorId}}", "videos"]
+            },
+            "description": "Get all videos for a creator using environment variable"
+          },
+          "response": []
+        }
+      ],
+      "description": "Creator management endpoints"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
